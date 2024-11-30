@@ -63,3 +63,11 @@ body {
 .blur-2xl {
   filter: blur(30px);
 }
+
+.connect-button {
+  transition: box-shadow 0.3s;
+}
+
+.connect-button.scarred {
+  box-shadow: inset 0px 0px 10px 5px rgba(255, 0, 0, 0.6);
+}
