@@ -245,7 +245,7 @@ export default function Home() {
 
 
 
-            {/* Updated Example Grid Items with Dropdown and Burnable Class */}
+            {/* Updated Grid Items with Dropdown and Burnable Class */}
             <div className="grid grid-cols-3 gap-6">
                 {/* Private Projects */}
                 <div
@@ -360,13 +360,29 @@ export default function Home() {
                 </div>
             </div>
 
-            {/* Welcome Section */}
-            <div className="mt-8 text-center">
-                <h1 className="text-4xl font-bold">Welcome to My Portfolio</h1>
-                <p className="text-lg mt-4 max-w-lg text-center">
-                    Explore my projects, learn more about me, and discover the mysteries of the universe!
+                {/* Welcome Section */}
+            <div className="text-center max-w-3xl mx-auto mt-8 space-y-6">
+                <h1 className="text-5xl font-bold mb-4 text-glow">Welcome to My Portfolio</h1>
+                <p className="text-lg leading-relaxed">
+                    Hello, and welcome! My name is Kevin Lübeck, and I’m thrilled to share my journey and work with you. I’ve always believed that technology is not just a tool
+                    but a bridge to the future, connecting people, solving challenges, and sparking innovation. This portfolio is a reflection of my passion for building creative,
+                    efficient, and meaningful solutions.
+                </p>
+                <p className="text-lg leading-relaxed">
+                    My fascination with problem-solving and design stems from a love for creating and experimenting. I take pride in pushing the boundaries of what´s possible, whether
+                    it´s crafting dynamic interfaces, optimizing cloud systems, or exploring new avenues in game mechanics. Each project I take on is an opportunity to learn, grow, and
+                    contribute something unique.
+                </p>
+                <p className="text-lg leading-relaxed">
+                    While technology drives my professional goals, my personal interests play a huge role in shaping my perspective. I´m inspired by the mysteries of the cosmos and the
+                    infinite possibilities of what lies beyond. This curiosity influences my work, as I aim to create applications that feel just as limitless and full of potential.
+                </p>
+                <p className="text-lg leading-relaxed">
+                    Whether you’re here to explore my projects, learn about my journey, or collaborate on exciting ideas, I’m delighted you’ve stopped by. Scroll down to dive deeper
+                    into the projects I’ve brought to life, or visit the interactive section to explore something fun and unexpected. Together, let’s turn ideas into reality!
                 </p>
             </div>
+
 
             {/* Connect Section */}
             <motion.div

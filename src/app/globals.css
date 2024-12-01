@@ -85,7 +85,7 @@ body {
 
 /* Burning Effect */
 .burnable.burning {
-  opacity: 0; /* Make it disappear */
+  opacity: 0; /* Make the element invisible */
   transition: opacity 2s ease-out; /* Smooth fading effect */
 }
 
@@ -102,6 +102,7 @@ body {
   font-family: Arial, Helvetica, sans-serif;
   position: relative;
   overflow: hidden;
+  text-shadow: 0 0 15px rgba(255, 255, 255, 0.7);
 }
 
 .about-section::before {
@@ -116,6 +117,7 @@ body {
   z-index: 0;
 }
 
+/* About Content Styles */
 .about-title {
   color: #f8fafc;
   text-shadow: 0px 0px 15px rgba(255, 255, 255, 0.7);
@@ -126,27 +128,59 @@ body {
   border: 1px solid rgba(255, 255, 255, 0.2);
   backdrop-filter: blur(10px);
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+  padding: 2rem;
+  border-radius: 1rem;
 }
 
 .about-content p {
-  margin-bottom: 1rem;
-  line-height: 1.8;
+  font-size: 1.5rem; /* Larger font size */
+  margin-bottom: 1.5rem;
+  line-height: 2;
+  transition: text-shadow 0.3s ease-in-out;
 }
 
-/* Animations */
-@keyframes spin-slow {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-/* Glow Effecty */
 .about-content p:hover {
-  text-shadow: 0 0 15px rgba(100, 200, 255, 0.7);
+  text-shadow: 0 0 15px rgba(100, 200, 255, 0.7), 0 0 25px rgba(0, 128, 255, 0.6);
 }
 
+/* Glow Effect for Titles */
+.text-glow {
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.8), 0 0 35px rgba(0, 128, 255, 0.8);
+}
 
+/* People Who Inspired Me Section */
+.inspiration-circle {
+  width: 6rem;
+  height: 6rem;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease-in-out, ring 0.3s ease-in-out;
+}
 
+.inspiration-circle:hover {
+  transform: scale(1.1);
+}
+
+.inspiration-name {
+  margin-top: 1rem;
+  font-size: 1.125rem;
+  text-align: center;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* Starfield Background */
+#starfield {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background-color: black;
+}
+/* Textglow enchantment */
+.text-glow {
+  text-shadow: 0 0 25px rgba(255, 255, 255, 0.8), 0 0 40px rgba(0, 128, 255, 0.8);
+}
