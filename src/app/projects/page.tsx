@@ -46,7 +46,7 @@ export default function Projects() {
 
                 The project incorporated best practices for cloud-native design, including event-driven architecture and fault-tolerant services. Emphasis was placed on observability through CloudWatch metrics and X-Ray tracing.
             `,
-            tech: "AWS Lambda, Docker, API Gateway, Jenkins, CloudWatch",
+            tech: "AWS Lambda, nginx, API Gateway, CloudWatch",
         },
         {
             title: "User Management System",

@@ -4,8 +4,10 @@ import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import emailjs from "@emailjs/browser";
 
+
+
 export default function Home() {
-    const [stars, setStars] = useState([]); // Array for star elements
+    const [stars, setStars] = useState([]); // Array star elements
     const [formData, setFormData] = useState({
         name: "",
         email: "",
@@ -19,7 +21,7 @@ export default function Home() {
     }); // State for dropdown menus
 
     useEffect(() => {
-        // Generate stars dynamically on the client side
+        // Generate stars dynamically only client sided
         const generatedStars = Array.from({ length: 100 }).map(() => ({
             id: Math.random(),
             top: `${Math.random() * 100}vh`,
@@ -30,7 +32,7 @@ export default function Home() {
         setStars(generatedStars);
     }, []);
 
-    // Handle data change
+    // Handle data changes
     const handleChange = (e) => {
         setFormData({
             ...formData,
@@ -122,22 +124,25 @@ export default function Home() {
                 />
             </div>
 
-            {/* Earth GIF at Bottom Right */}
-            <motion.div
-                className="absolute bottom-4 right-4 w-60 h-60 pointer-events-none"
-                animate={{ rotate: 360 }}
-                transition={{
-                    repeat: Infinity,
-                    duration: 20,
-                    ease: "linear",
-                }}
-            >
-                <img
-                    src="/Earth.gif"
-                    alt="Rotating Earth"
-                    className="w-full h-full object-cover rounded-full"
-                />
-            </motion.div>
+            <div className="absolute bottom-4 right-4 w-60 h-60 pointer-events-none earth-container burnable">
+                <motion.div
+                    animate={{ rotate: 360 }}
+                    transition={{
+                        repeat: Infinity,
+                        duration: 40,
+                        ease: "linear",
+                    }}
+                >
+                    <img
+                        src="/Earth.gif"
+                        alt="Rotating Earth"
+                        className="w-full h-full object-cover rounded-full"
+                    />
+                </motion.div>
+            </div>
+
+
+
 
             {/* Black Hole with Singularity Point */}
             <motion.div
@@ -243,9 +248,76 @@ export default function Home() {
                 />
             </motion.div>
 
+            {/* Glacial Comet Effect */}
+            <motion.div
+                className="absolute w-6 h-6 bg-gradient-to-br from-blue-300 to-blue-700 rounded-full shadow-lg glacial-comet"
+                initial={{ top: "-10%", left: "-10%", opacity: 0 }}
+                animate={{ top: "90%", left: "95%", opacity: 1 }} // Adjusted target to hit
+                transition={{
+                    duration: 6,
+                    delay: 10,
+                    repeat: Infinity,
+                    repeatDelay: 30,
+                    ease: "easeIn",
+                }}
+                style={{
+                    transform: "translate(-50%, -50%)",
+                }}
+                onUpdate={() => {
+                    const comet = document.querySelector(".glacial-comet");
+                    const burnables = document.querySelectorAll(".burnable");
+
+                    if (comet && burnables) {
+                        const cometRect = comet.getBoundingClientRect();
+
+                        burnables.forEach((burnable) => {
+                            const burnableRect = burnable.getBoundingClientRect();
+
+                            if (
+                                cometRect.left < burnableRect.right &&
+                                cometRect.right > burnableRect.left &&
+                                cometRect.top < burnableRect.bottom &&
+                                cometRect.bottom > burnableRect.top
+                            ) {
+                                // Add burning or freezing effect
+                                burnable.classList.add("burning", "freezing");
+
+                                // Remove the effect after 4 seconds
+                                setTimeout(() => {
+                                    burnable.classList.remove("burning", "freezing");
+                                }, 4000);
+                            }
+                        });
+                    }
+                }}
+            >
+                {/* Ice Aura Effect for Comet */}
+                <motion.div
+                    className="absolute w-8 h-8 bg-gradient-to-br from-blue-400 to-blue-800 opacity-70 rounded-full blur-lg ice-effect"
+                    style={{
+                        top: "48%",
+                        left: "50%",
+                        transform: "translate(-50%, -50%)",
+                    }}
+                    animate={{
+                        opacity: [0.8, 0.5, 0.8],
+                        scale: [1, 1.5, 1],
+                        x: [0, 5, -5, 0], // realistic effect
+                        y: [0, 5, -5, 0],
+                    }}
+                    transition={{
+                        duration: 0.2,
+                        repeat: Infinity,
+                    }}
+                />
+            </motion.div>
 
 
-            {/* Updated Grid Items with Dropdown and Burnable Class */}
+
+
+
+
+            {/* Grid Items with Dropdown and Burnable Class */}
             <div className="grid grid-cols-3 gap-6">
                 {/* Private Projects */}
                 <div
@@ -360,28 +432,31 @@ export default function Home() {
                 </div>
             </div>
 
-                {/* Welcome Section */}
+            {/* Welcome Section */}
             <div className="text-center max-w-3xl mx-auto mt-8 space-y-6">
-                <h1 className="text-5xl font-bold mb-4 text-glow">Welcome to My Portfolio</h1>
-                <p className="text-lg leading-relaxed">
+                <h1 className="text-5xl font-bold mb-4 text-glow burnable">
+                    Welcome to My Portfolio
+                </h1>
+                <p className="text-lg leading-relaxed burnable">
                     Hello, and welcome! My name is Kevin Lübeck, and I’m thrilled to share my journey and work with you. I’ve always believed that technology is not just a tool
                     but a bridge to the future, connecting people, solving challenges, and sparking innovation. This portfolio is a reflection of my passion for building creative,
                     efficient, and meaningful solutions.
                 </p>
-                <p className="text-lg leading-relaxed">
+                <p className="text-lg leading-relaxed burnable">
                     My fascination with problem-solving and design stems from a love for creating and experimenting. I take pride in pushing the boundaries of what´s possible, whether
                     it´s crafting dynamic interfaces, optimizing cloud systems, or exploring new avenues in game mechanics. Each project I take on is an opportunity to learn, grow, and
                     contribute something unique.
                 </p>
-                <p className="text-lg leading-relaxed">
+                <p className="text-lg leading-relaxed burnable">
                     While technology drives my professional goals, my personal interests play a huge role in shaping my perspective. I´m inspired by the mysteries of the cosmos and the
                     infinite possibilities of what lies beyond. This curiosity influences my work, as I aim to create applications that feel just as limitless and full of potential.
                 </p>
-                <p className="text-lg leading-relaxed">
-                    Whether you’re here to explore my projects, learn about my journey, or collaborate on exciting ideas, I’m delighted you’ve stopped by. Scroll down to dive deeper
+                <p className="text-lg leading-relaxed burnable">
+                    Whether you’re here to explore my projects, learn about my journey, or collaborate on exciting ideas, I’m delighted you’ve stopped by. Dive deeper
                     into the projects I’ve brought to life, or visit the interactive section to explore something fun and unexpected. Together, let’s turn ideas into reality!
                 </p>
             </div>
+
 
 
             {/* Connect Section */}

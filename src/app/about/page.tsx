@@ -35,7 +35,10 @@ export default function About() {
                         boundaries of what’s possible in technology. With a solid
                         foundation in cloud development, a creative approach, and an
                         insatiable curiosity to learn, I’m excited to shape the future,
-                        one project at a time.
+                        one project at a time. My Next Project? A 3D based game built
+                        with unreal engine 5 and the new nanite technology to push the
+                        boundaries of what´s possible in gaming. Stay tuned! Because Alot more is coming!
+                        And dont forget to try and find the Hidden Site! 😁
                     </p>
                 </div>
 
