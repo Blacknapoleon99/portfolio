@@ -28,7 +28,7 @@ export default function Interactive() {
 
     return (
         <div className="min-h-screen bg-gradient-to-br from-teal-800 to-green-900 text-white p-8 flex flex-col items-center">
-            <h1 className="text-3xl font-bold mb-6">Interactive Page</h1>
+            <h1 className="text-3xl font-bold mb-6">Review Page</h1>
             <div className="w-full max-w-md p-6 bg-gray-700 rounded-lg shadow-lg">
                 <label className="block mb-2 font-medium">Enter your name:</label>
                 <input
@@ -52,12 +52,12 @@ export default function Interactive() {
                     onClick={handleSave}
                     className="w-full px-4 py-2 bg-blue-600 hover:bg-blue-700 rounded-lg transition"
                 >
-                    Save Data
+                    Save Review
                 </button>
 
                 {savedData.name || savedData.message ? (
                     <div className="mt-6 p-4 bg-gray-800 rounded-lg">
-                        <h2 className="text-2xl font-semibold">Saved Data:</h2>
+                        <h2 className="text-2xl font-semibold">Review box for the next visitor to see and Edit!:</h2>
                         {savedData.name && (
                             <p className="mt-2">
                                 <strong>Name:</strong> {savedData.name}
@@ -65,7 +65,7 @@ export default function Interactive() {
                         )}
                         {savedData.message && (
                             <p className="mt-2">
-                                <strong>Message:</strong> {savedData.message}
+                                <strong>Review:</strong> {savedData.message}
                             </p>
                         )}
                     </div>
