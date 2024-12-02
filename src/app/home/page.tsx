@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
+import {ChangeEvent, useEffect, useState} from "react";
 import emailjs from "@emailjs/browser";
 import Image from "next/image";
 
@@ -43,16 +43,47 @@ export default function Home() {
         setStars(generatedStars); // No more type error
     }, []);
 
-    // Handle data changes
-    const handleChange = (e) => {
+
+// Handle data changes
+    const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
         setFormData({
             ...formData,
             [e.target.name]: e.target.value,
         });
     };
 
+    return (
+        <div>
+            {/* Example Form */}
+            <form>
+                <input
+                    type="text"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    placeholder="Your Name"
+                />
+                <input
+                    type="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    placeholder="Your Email"
+                />
+                <textarea
+                    name="message"
+                    value={formData.message}
+                    onChange={handleChange}
+                    placeholder="Your Message"
+                />
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    );
+
+
     // Handle form submission
-    const handleSubmit = (e) => {
+    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
         // Save form data to localStorage
@@ -82,7 +113,8 @@ export default function Home() {
                 }
             );
 
-        // Clear fields after submission
+
+        // Clear form fields after submission
         setFormData({
             name: "",
             email: "",
@@ -90,12 +122,14 @@ export default function Home() {
         });
     };
 
-    const toggleDropdown = (menu) => {
+
+    const toggleDropdown = (menu: keyof typeof dropdown) => {
         setDropdown((prev) => ({
             ...prev,
             [menu]: !prev[menu],
         }));
     };
+
 
     return (
         <div className="relative min-h-screen bg-gradient-to-br from-black via-black to-purple-900 flex flex-col items-center justify-between text-white overflow-hidden">
