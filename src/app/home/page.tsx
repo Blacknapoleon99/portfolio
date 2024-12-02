@@ -3,12 +3,23 @@
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import emailjs from "@emailjs/browser";
+import Image from "next/image";
+
+
+type Star = {
+    id: number;
+    top: string;
+    left: string;
+    scale: number;
+    opacity: number;
+};
 
 
 
 export default function Home() {
-    const [stars, setStars] = useState([]); // Array star elements for background
+    const [stars, setStars] = useState<Star[]>([]);
     const [formData, setFormData] = useState({
+
         name: "",
         email: "",
         message: "",
@@ -21,7 +32,7 @@ export default function Home() {
     }); // State for dropdown menus
 
     useEffect(() => {
-        // Generate stars dynamically only client sided
+        // Generate stars dynamically only client-sided
         const generatedStars = Array.from({ length: 100 }).map(() => ({
             id: Math.random(),
             top: `${Math.random() * 100}vh`,
@@ -29,7 +40,7 @@ export default function Home() {
             scale: Math.random() * 0.8 + 0.3,
             opacity: Math.random() * 0.5 + 0.5,
         }));
-        setStars(generatedStars);
+        setStars(generatedStars); // No more type error
     }, []);
 
     // Handle data changes
@@ -117,9 +128,11 @@ export default function Home() {
 
             {/* GIF at Top Left */}
             <div className="absolute top-0 left-0 w-20 h-20 pointer-events-none">
-                <img
+                <Image
                     src="/Red Hole.gif"
                     alt="Glowing Red Hole"
+                    width={80}
+                    height={80}
                     className="w-full h-full object-cover"
                 />
             </div>
@@ -133,10 +146,12 @@ export default function Home() {
                         ease: "linear",
                     }}
                 >
-                    <img
+                    <Image
                         src="/Earth.gif"
                         alt="Rotating Earth"
                         className="w-full h-full object-cover rounded-full"
+                        width={240}
+                        height={240}
                     />
                 </motion.div>
             </div>

@@ -1,4 +1,5 @@
 import Starfield from "@/app/components/Starfield";
+import Image from "next/image";
 
 export default function About() {
     return (
@@ -56,10 +57,12 @@ export default function About() {
                             className="flex flex-col items-center hover:scale-110 transition-transform duration-300"
                         >
                             <div className="w-32 h-32 rounded-full overflow-hidden shadow-lg ring-4 ring-white hover:ring-blue-500">
-                                <img
+                                <Image
                                     src="/Henry Kerali.jpg"
                                     alt="Henry Kerali"
                                     className="w-full h-full object-cover"
+                                    width={240}
+                                    height={240}
                                 />
                             </div>
                             <p className="mt-4 text-center text-lg font-medium inspiration-name">
@@ -75,10 +78,12 @@ export default function About() {
                             className="flex flex-col items-center hover:scale-110 transition-transform duration-300"
                         >
                             <div className="w-32 h-32 rounded-full overflow-hidden shadow-lg ring-4 ring-white hover:ring-blue-500">
-                                <img
+                                <Image
                                     src="/Elon Musk.jpg"
                                     alt="Elon Musk"
                                     className="w-full h-full object-cover"
+                                    width={240}
+                                    height={240}
                                 />
                             </div>
                             <p className="mt-4 text-center text-lg font-medium inspiration-name">
@@ -94,10 +99,12 @@ export default function About() {
                             className="flex flex-col items-center hover:scale-110 transition-transform duration-300"
                         >
                             <div className="w-32 h-32 rounded-full overflow-hidden shadow-lg ring-4 ring-white hover:ring-blue-500">
-                                <img
+                                <Image
                                     src="/Blizzard Entertainment.jpg"
                                     alt="Blizzard Entertainment"
                                     className="w-full h-full object-cover"
+                                    width={240}
+                                    height={240}
                                 />
                             </div>
                             <p className="mt-4 text-center text-lg font-medium inspiration-name">
