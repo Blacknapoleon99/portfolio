@@ -11,7 +11,7 @@ const Starfield = () => {
         const stars = Array.from({ length: 500 }, () => ({
             x: Math.random() * width,
             y: Math.random() * height,
-            z: Math.random() * width,
+            z: Math.random() * width + 1, // Z is always positive
         }));
 
         const resizeCanvas = () => {
@@ -26,12 +26,12 @@ const Starfield = () => {
             context.fillRect(0, 0, width, height);
             stars.forEach((star) => {
                 star.z -= 2;
-                if (star.z <= 0) star.z = width;
+                if (star.z <= 0) star.z = width; // Reset z if it goes OOB
                 const k = 128.0 / star.z;
                 const px = star.x * k + width / 2;
                 const py = star.y * k + height / 2;
                 if (px >= 0 && px <= width && py >= 0 && py <= height) {
-                    const size = (1 - star.z / width) * 5;
+                    const size = Math.max((1 - star.z / width) * 5, 0.1); // Prevent neg size
                     context.fillStyle = 'white';
                     context.beginPath();
                     context.arc(px, py, size, 0, Math.PI * 2);

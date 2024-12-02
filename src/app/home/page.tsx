@@ -7,7 +7,7 @@ import emailjs from "@emailjs/browser";
 
 
 export default function Home() {
-    const [stars, setStars] = useState([]); // Array star elements
+    const [stars, setStars] = useState([]); // Array star elements for background
     const [formData, setFormData] = useState({
         name: "",
         email: "",
@@ -124,7 +124,7 @@ export default function Home() {
                 />
             </div>
 
-            <div className="absolute bottom-4 right-4 w-60 h-60 pointer-events-none earth-container burnable">
+            <div className="absolute bottom-4 right-4 w-30 h-30 pointer-events-none earth-container burnable">
                 <motion.div
                     animate={{ rotate: 360 }}
                     transition={{
@@ -140,6 +140,7 @@ export default function Home() {
                     />
                 </motion.div>
             </div>
+
 
 
 
@@ -252,12 +253,12 @@ export default function Home() {
             <motion.div
                 className="absolute w-6 h-6 bg-gradient-to-br from-blue-300 to-blue-700 rounded-full shadow-lg glacial-comet"
                 initial={{ top: "-10%", left: "-10%", opacity: 0 }}
-                animate={{ top: "90%", left: "95%", opacity: 1 }} // Adjusted target to hit
+                animate={{ top: "120%", left: "120%", opacity: 1 }}
                 transition={{
-                    duration: 6,
+                    duration: 6, // Adjust speed if needed in future
                     delay: 10,
                     repeat: Infinity,
-                    repeatDelay: 30,
+                    repeatDelay: 30, // Comet reappears every 30 seconds
                     ease: "easeIn",
                 }}
                 style={{
@@ -265,35 +266,32 @@ export default function Home() {
                 }}
                 onUpdate={() => {
                     const comet = document.querySelector(".glacial-comet");
-                    const burnables = document.querySelectorAll(".burnable");
+                    const earth = document.querySelector(".earth-container") as HTMLElement;
 
-                    if (comet && burnables) {
+                    if (comet && earth) {
                         const cometRect = comet.getBoundingClientRect();
+                        const earthRect = earth.getBoundingClientRect();
 
-                        burnables.forEach((burnable) => {
-                            const burnableRect = burnable.getBoundingClientRect();
+                        if (
+                            cometRect.left < earthRect.right &&
+                            cometRect.right > earthRect.left &&
+                            cometRect.top < earthRect.bottom &&
+                            cometRect.bottom > earthRect.top
+                        ) {
+                            // Add a fade-out effect to the Earth GIF
+                            earth.style.opacity = "0";
 
-                            if (
-                                cometRect.left < burnableRect.right &&
-                                cometRect.right > burnableRect.left &&
-                                cometRect.top < burnableRect.bottom &&
-                                cometRect.bottom > burnableRect.top
-                            ) {
-                                // Add burning or freezing effect
-                                burnable.classList.add("burning", "freezing");
-
-                                // Remove the effect after 4 seconds
-                                setTimeout(() => {
-                                    burnable.classList.remove("burning", "freezing");
-                                }, 4000);
-                            }
-                        });
+                            // Restore the Earth opacity after 15000 Mseconds
+                            setTimeout(() => {
+                                earth.style.opacity = "1";
+                            }, 15000);
+                        }
                     }
                 }}
             >
                 {/* Ice Aura Effect for Comet */}
                 <motion.div
-                    className="absolute w-8 h-8 bg-gradient-to-br from-blue-400 to-blue-800 opacity-70 rounded-full blur-lg ice-effect"
+                    className="absolute w-12 h-12 bg-gradient-to-br from-blue-400 to-blue-800 opacity-70 rounded-full blur-lg ice-effect"
                     style={{
                         top: "48%",
                         left: "50%",

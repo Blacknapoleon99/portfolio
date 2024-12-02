@@ -19,6 +19,8 @@ body {
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* Animations */
 @keyframes spin-slow {
   0% {
     transform: rotate(0deg);
@@ -48,6 +50,7 @@ body {
   }
 }
 
+/* Animation Classes */
 .animate-spin-slow {
   animation: spin-slow 10s linear infinite;
 }
@@ -64,15 +67,7 @@ body {
   filter: blur(30px);
 }
 
-.connect-button {
-  transition: box-shadow 0.3s;
-}
-
-.connect-button.scarred {
-  box-shadow: inset 0px 0px 10px 5px rgba(255, 0, 0, 0.6);
-
-}
-
+/* Burnable Elements */
 .burnable {
   transition: all 0.3s ease-in-out;
 }
@@ -83,23 +78,20 @@ body {
   opacity: 0.7;
 }
 
-/* Burning Effect */
 .burnable.burning {
   opacity: 0; /* Make the element invisible */
   transition: opacity 2s ease-out; /* Smooth fading effect */
 }
 
-/* Restore opacity after the burn */
 .burnable {
   opacity: 1;
   transition: opacity 2s ease-in;
 }
 
-/* About Section Styles */
+/* About Section */
 .about-section {
   background: linear-gradient(to bottom right, #1b1f38, #0a0d21);
   color: #ffffff;
-  font-family: Arial, Helvetica, sans-serif;
   position: relative;
   overflow: hidden;
   text-shadow: 0 0 15px rgba(255, 255, 255, 0.7);
@@ -117,7 +109,6 @@ body {
   z-index: 0;
 }
 
-/* About Content Styles */
 .about-title {
   color: #f8fafc;
   text-shadow: 0px 0px 15px rgba(255, 255, 255, 0.7);
@@ -133,7 +124,7 @@ body {
 }
 
 .about-content p {
-  font-size: 1.5rem; /* Larger font size */
+  font-size: 1.5rem;
   margin-bottom: 1.5rem;
   line-height: 2;
   transition: text-shadow 0.3s ease-in-out;
@@ -143,57 +134,19 @@ body {
   text-shadow: 0 0 15px rgba(100, 200, 255, 0.7), 0 0 25px rgba(0, 128, 255, 0.6);
 }
 
-/* Glow Effect for Titles */
-.text-glow {
-  text-shadow: 0 0 20px rgba(255, 255, 255, 0.8), 0 0 35px rgba(0, 128, 255, 0.8);
-}
-
-/* People Who Inspired Me Section */
-.inspiration-circle {
-  width: 6rem;
-  height: 6rem;
-  border-radius: 50%;
-  overflow: hidden;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-  transition: transform 0.3s ease-in-out, ring 0.3s ease-in-out;
-}
-
-.inspiration-circle:hover {
-  transform: scale(1.1);
-}
-
-.inspiration-name {
-  margin-top: 1rem;
-  font-size: 1.125rem;
-  text-align: center;
-  font-weight: 500;
-  color: rgba(255, 255, 255, 0.9);
-}
-
-/* Starfield Background */
-#starfield {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-  background-color: black;
-}
-/* Textglow enchantment */
+/* Text Glow */
 .text-glow {
   text-shadow: 0 0 25px rgba(255, 255, 255, 0.8), 0 0 40px rgba(0, 128, 255, 0.8);
 }
 
-/* Earth and Glacial Comet Styles */
+/* Earth and Glacial Comet */
 .earth-container {
   position: absolute;
   bottom: 1rem;
   right: 1rem;
-  width: 15rem; /* 240px */
+  width: 15rem;
   height: 15rem;
-  pointer-events: none; /* Prevent pointer interaction */
-  z-index: 5;
+  pointer-events: none;
 }
 
 .earth-img {
@@ -201,37 +154,85 @@ body {
   height: 100%;
   object-fit: cover;
   border-radius: 50%;
-  box-shadow: 0 0 20px rgba(0, 128, 255, 0.5); /* Blue glowing effect */
-  transform: translateZ(0);
+  box-shadow: 0 0 20px rgba(0, 128, 255, 0.5);
 }
-
 
 .glacial-comet {
   position: absolute;
   border-radius: 50%;
-  animation: pulse 2s infinite; /* Adds a pulsing effect */
+  animation: pulse 2s infinite;
 }
 
 .ice-effect {
-  filter: blur(4px); /* Reduced blur for smaller aura */
+  filter: blur(4px);
   border-radius: 50%;
   width: 50%;
   height: 50%;
 }
 
-/* Freezing Effect */
-.burnable.freezing {
-  background: linear-gradient(to bottom, #1e3a8a, #2563eb); /* Frosty colors */
-  transform: scale(1.1);
-  opacity: 0.6; /* Semi-transparent effect */
-  transition: all 0.3s ease-in-out;
+/* Media Queries for Responsiveness */
+@media (max-width: 1024px) { /* For tablets */
+  body {
+    font-size: 0.9rem; /* Slightly smaller font size */
+  }
+
+  .earth-container {
+    width: 12rem; /* Reduced size for tablets */
+    height: 12rem;
+  }
+
+  .about-content p {
+    font-size: 1.2rem; /* Adjust font size for better readability */
+  }
+
+  .connect-button {
+    width: 90%; /* Better fit for tablets */
+  }
 }
 
-.burnable.freezing:hover {
-  box-shadow: 0 0 15px rgba(173, 216, 230, 0.7), 0 0 30px rgba(173, 216, 230, 0.7); /* Icy glow */
+@media (max-width: 768px) { /* For mobile devices */
+  body {
+    font-size: 0.8rem; /* Smaller font size for phones */
+  }
+
+  .earth-container {
+    width: 10rem; /* Smaller size for phones */
+    height: 10rem;
+  }
+
+  .about-content p {
+    font-size: 1rem; /* Adjust text size for compact screens */
+  }
+
+  .connect-button {
+    width: 100%; /* Full-width button for better touch usability */
+  }
+
+  .burnable {
+    margin: 1rem auto; /* Center burnable items for smaller screens */
+  }
 }
 
-.burnable.freezing.burning {
-  opacity: 0; /* Both effects combined - element disappears */
-}
+@media (max-width: 480px) { /* For small mobile devices */
+  body {
+    font-size: 0.7rem; /* Further reduced font size for compact devices */
+  }
 
+  .earth-container {
+    width: 8rem; /* Smallest size for Earth GIF */
+    height: 8rem;
+  }
+
+  .about-content p {
+    font-size: 0.9rem; /* readability on small devices */
+  }
+
+  .connect-button {
+    width: 100%; /* Ensure button spans entire screen width */
+  }
+
+  .glacial-comet {
+    width: 4rem; /* Smaller comet size for smaller screens */
+    height: 4rem;
+  }
+}
