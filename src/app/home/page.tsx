@@ -45,44 +45,16 @@ export default function Home() {
 
 
 // Handle data changes
-    const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    const handleChange = (
+        e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+    ) => {
         setFormData({
             ...formData,
             [e.target.name]: e.target.value,
         });
     };
 
-    return (
-        <div>
-            {/* Example Form */}
-            <form>
-                <input
-                    type="text"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    placeholder="Your Name"
-                />
-                <input
-                    type="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    placeholder="Your Email"
-                />
-                <textarea
-                    name="message"
-                    value={formData.message}
-                    onChange={handleChange}
-                    placeholder="Your Message"
-                />
-                <button type="submit">Submit</button>
-            </form>
-        </div>
-    );
-
-
-    // Handle form submission
+// Handle form submission
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
@@ -113,7 +85,6 @@ export default function Home() {
                 }
             );
 
-
         // Clear form fields after submission
         setFormData({
             name: "",
@@ -122,14 +93,12 @@ export default function Home() {
         });
     };
 
-
     const toggleDropdown = (menu: keyof typeof dropdown) => {
         setDropdown((prev) => ({
             ...prev,
             [menu]: !prev[menu],
         }));
     };
-
 
     return (
         <div className="relative min-h-screen bg-gradient-to-br from-black via-black to-purple-900 flex flex-col items-center justify-between text-white overflow-hidden">
@@ -159,6 +128,7 @@ export default function Home() {
                     />
                 ))}
             </div>
+
 
             {/* GIF at Top Left */}
             <div className="absolute top-0 left-0 w-20 h-20 pointer-events-none">
